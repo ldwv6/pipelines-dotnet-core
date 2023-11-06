@@ -15,3 +15,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'data_ai_Microsoft Azure 스폰서쉽(48095a25-41e9-4c63-8ff0-961aff88780b)'
+    appType: 'webApp'
+    WebAppName: 'pipe'
+    VirtualApplication: 'aaaa'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
